@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./Css/style.css" media="all">
+    <title>CMDPT</title>
+</head>
+
+<body>
+
+    <div id="menu">
+        <div id="logo">
+        </div>
+        <ul>
+            <li><a href="#" onclick="loadContent('como_usar.html')">Como Usar</a></li>
+            <li><a href="#" onclick="loadContent('como_instalar.html')">Como Instalar</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <button id="hackerbtn" onclick="suprise(this)">
+            Não Aperte
+        </button>
+        <img id="hackerImg" src="./Assets/Hulka.png">
+        <!-- O conteúdo carregado via AJAX aparecerá aqui -->
+        <div id="loading"></div>
+        <div id="typing"></div>
+    </div>
+    <div id="footer">
+        <p>© 2024 CMDPT</p>
+    </div>
+
+
+    <script type="text/javascript" src="./Js/Logo.js"></script>
+    <script type="text/javascript" src="./Js/Commands.js"></script>
+    <script type="text/javascript" src="./Js/Config.js"></script>
+
+
+    <script>
+
+        function configSuprise(event, psE, acT) {
+            psE.style.display = "none";
+
+            var stylExternal = window.getComputedStyle(acT);
+            var bottomInPx = parseFloat(stylExternal.bottom);
+
+            var parentElement = acT.parentElement;
+            var parentHeight = parentElement.offsetHeight;
+
+            var bottomInPercent = (bottomInPx / parentHeight) * 100;
+            var bottomInPercentRounded = Math.round(bottomInPercent);
+
+            // console.log("Bottom em porcentagem (arredondado): " + bottomInPercentRounded + "%");
+
+            function moveImageUp(acT, velocity) {
+                var bottomInPercent = -50; // Valor inicial de 'bottom'
+                var audio = new Audio('./Sounds/Eopix.mp3');
+
+                var moveUp = setInterval(function () {
+                    if (bottomInPercent < 0) {
+                        acT.style.bottom = bottomInPercent + "%";
+                        bottomInPercent += 5;
+                    } else {
+                        audio.play();
+                        clearInterval(moveUp);
+                        // Quando o áudio terminar, comece a mover a imagem para baixo
+                        audio.onended = function () {
+                            bottomInPercent = 0; // Reset the bottom percentage
+                            var moveDown = setInterval(function () {
+                                if (bottomInPercent > -50) {
+                                    bottomInPercent -= 5;
+                                    acT.style.bottom = bottomInPercent + "%";
+                                } else {
+                                    clearInterval(moveDown);
+                                }
+                            }, velocity);
+                        };
+                    }
+                }, velocity);
+            }
+
+            moveImageUp(acT, 300); // Substitua 300 pela velocidade desejada
+
+
+
+        }
+
+
+
+        function suprise(e) {
+            idBTN = e.id
+
+            const styleBNT = window.getComputedStyle(e)
+            if (idBTN) {
+                imgHacker = document.getElementById("hackerImg")
+                styleBNT.display === "block" ? configSuprise(true, e, imgHacker) : false
+            }
+        }
+    </script>
+</body>
+
+</html>
