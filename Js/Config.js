@@ -30,6 +30,13 @@
   }
 
   // Uso das funções
-  loadingEffect();
-  typingEffect("/escrever-arquivo -dir -ar");
-  typingEffect("/criar-arquivo -dir -ar");
+loadingEffect();
+typingEffect("┍┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┓");
+typingEffect("┏ ─────────────────────────────────────────────────────");
+typingEffect("┣ cd /caminho/para/diretorio");
+typingEffect("┣ touch nome-do-arquivo");
+typingEffect("┣ rm nome-do-arquivo");
+typingEffect("┣ cp /caminho/para/arquivo /caminho/para/diretorio");
+typingEffect("┣ mv /caminho/para/arquivo /caminho/para/diretorio");
+typingEffect("┣ mkdir nome-do-diretorio");
+typingEffect("┗ ─────────────────────────────────────────────────────");

@@ -5,27 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./Css/style.css" media="all">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <title>CMDPT</title>
 </head>
 
 <body>
-
     <div id="menu">
         <div id="logo">
         </div>
         <ul>
-            <li><a href="#" onclick="loadContent('como_usar.html')">Como Usar</a></li>
+            <li><a href="#usage" onclick="loadContent('./Pages/iniciar.html')">Começo rápido</a></li>
             <li><a href="#" onclick="loadContent('como_instalar.html')">Como Instalar</a></li>
         </ul>
+        <div id="project-structure">
+            <pre>
+CMDPT/
+│
+├── <a> <img src="https://win98icons.alexmeub.com/icons/png/help_book_cool-1.png"> criar-pasta</a>
+│
+├── <a> <img src="https://win98icons.alexmeub.com/icons/png/help_book_cool-1.png"> criar-arquivo</a>
+│
+├── <a> <img src="https://win98icons.alexmeub.com/icons/png/help_book_cool-1.png"> escrever-arquivo</a>
+│
+├── <a> <img src="https://win98icons.alexmeub.com/icons/png/help_book_cool-1.png"> copiar</a>
+│
+├── <a> <img src="https://win98icons.alexmeub.com/icons/png/help_book_cool-1.png"> deletar</a>
+│
+├── <a> <img src="https://win98icons.alexmeub.com/icons/png/help_book_cool-1.png"> renomear</a>
+│
+├── <a> <img src="https://win98icons.alexmeub.com/icons/png/help_book_cool-1.png"> mover</a>
+│
+└── <a> <img src="https://win98icons.alexmeub.com/icons/png/world_network_directories-1.png"> contribuir</a>
+            </pre>
+        </div>
     </div>
     <div id="content">
-        <button id="hackerbtn" onclick="suprise(this)">
-            Não Aperte
+        <div id="contentRender">
+
+        </div>
+        <div id="cmdModal" class="cmd-modal">
+            <div class="cmd-header">
+                <span class="close">×</span>
+                <h2>Pix</h2>
+            </div>
+            <div class="cmd-content">
+                <div class="myPix">
+                    <div>
+                        <p>Contribua para que o CMDPT para continuar implemtando novos commandos e recursos operacionais
+                            !!!</p>
+                        <a href="">Saiba Mais</a>
+                        <img src="https://win98icons.alexmeub.com/icons/png/address_book_pad.png" width="20" alt="">
+                    </div>
+                    <img src="./Assets/qrcode-pix.png" class="piximg" alt="pix">
+                </div>
+            </div>
+        </div>
+
+
+        <button id="hackerbtn" class="btn btn-1 btn-sep icon-info pixButton" onclick="suprise(this)">
+            Tem 1 real ?
         </button>
         <img id="hackerImg" src="./Assets/Hulka.png">
         <!-- O conteúdo carregado via AJAX aparecerá aqui -->
-        <div id="loading"></div>
-        <div id="typing"></div>
+        <div class="toolsview">
+            <div id="loading"></div>
+            <div id="typing"></div>
+        </div>
     </div>
     <div id="footer">
         <p>© 2024 CMDPT</p>
@@ -36,6 +82,8 @@
     <script type="text/javascript" src="./Js/Commands.js"></script>
     <script type="text/javascript" src="./Js/Config.js"></script>
     <script type="text/javascript" src="./Js/Supriser.js"></script>
+
+
 </body>
 
 </html>

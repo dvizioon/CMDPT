@@ -3,7 +3,12 @@ function loadContent(page) {
     xhr.open('GET', page, true);
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById('content').innerHTML = this.responseText;
+            document.querySelector('.toolsview').style.display = "none"
+            document.getElementById('contentRender').style.display="block"
+            document.getElementById('contentRender').innerHTML = this.responseText;
+        } else {
+            document.querySelector('.toolsview').style.display = "block"
+            document.getElementById('contentRender').style.display = "none"
         }
     };
     xhr.send();

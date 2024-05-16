@@ -32,6 +32,15 @@ function configSuprise(event, psE, acT) {
                             bottomInPercent -= 5;
                             acT.style.bottom = bottomInPercent + "%";
                         } else {
+                            var modal = document.getElementById('cmdModal');
+                            var span = document.getElementsByClassName("close")[0];
+                            modal.style.display = "block";
+                        
+                            span.onclick = function () {
+                                modal.style.display = "none";
+                                psE.style.display = "block";
+                            }
+
                             clearInterval(moveDown);
                         }
                     }, velocity);
