@@ -105,10 +105,13 @@
        display: inline-flex;
        align-content: center;
        width: 100%;
+    color: white;
+    text-decoration: none;
    }
 
    #project-structure a:hover {
-       color: white;
+       color: #00FF00;
+    text-decoration:underline;
    }
 
    #menu li {
@@ -170,7 +173,7 @@
        height: 95%;
        background-color: none;
        display: none;
-
+       
 
    }
 
