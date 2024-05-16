@@ -32,11 +32,12 @@
   // Uso das funções
 loadingEffect();
 typingEffect("┍┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┯┓");
-typingEffect("┏ ─────────────────────────────────────────────────────");
+typingEffect("┏ ────────────────────────────────────────────────────");
 typingEffect("┣ cd /caminho/para/diretorio");
 typingEffect("┣ touch nome-do-arquivo");
 typingEffect("┣ rm nome-do-arquivo");
 typingEffect("┣ cp /caminho/para/arquivo /caminho/para/diretorio");
 typingEffect("┣ mv /caminho/para/arquivo /caminho/para/diretorio");
 typingEffect("┣ mkdir nome-do-diretorio");
-typingEffect("┗ ─────────────────────────────────────────────────────");
+typingEffect("┗ ────────────────────────────────────────────────────");
+typingEffect("┕┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┷┛")
