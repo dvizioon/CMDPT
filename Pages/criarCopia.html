@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./Css/style.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./Css/min.css" media="all">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <title>Como usar a função de copiar</title>
+
+    <style>
+        .icon {
+            color: lime;
+            margin-right: 10px;
+        }
+
+        .command {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-template">
+        <div class="card">
+            <h1>Como usar a função de copiar</h1>
+
+            <h2>CallBack / Functions</h2>
+            <pre class="pre-templates">
+------------------ <img src="https://win98icons.alexmeub.com/icons/png/chm-0.png" /> 
+int main() 
+{
+    std::string flag = "-ar";
+    std::string nomeOrigem = "arquivo.txt";
+    std::string paraDiretorio = "diretorio_destino";
+
+    copiar(flag, nomeOrigem, paraDiretorio);
+
+    std::string flag = "-dir";
+    std::string nomeOrigem = "caminho_relativo || absoluto";
+    std::string paraDiretorio = "caminho_relativo || absoluto";
+    
+    copiar(flag, nomeOrigem, paraDiretorio);
+
+    return 0;
+}
+------------------
+            </pre>
+
+            <h2>Registro da Função</h2>
+            <pre class="pre-templates">
+------------------ <img src="https://win98icons.alexmeub.com/icons/png/chm-0.png" />
+
+comandos["copiar"] = [](const std::vector&lt;std::string&gt; &amp;args)
+{
+    if (args.size() != 4 || args[2] != "-para")
+    {
+        std::cerr &lt;&lt; "Erro: Uso incorreto. Use: copiar -ar &lt;nomeOrigem&gt; -para &lt;diretorioDestino&gt;" &lt;&lt; std::endl;
+        std::cerr &lt;&lt; "      Ou: copiar -dir &lt;nomeOrigem&gt; -para &lt;diretorioDestino&gt;" &lt;&lt; std::endl;
+        return;
+    }
+
+    std::string flag = args[0];
+    std::string nomeOrigem = args[1];
+    std::string paraDiretorio = args[3];
+
+    if (flag == "-dir")
+    {
+        copiarFolder(nomeOrigem, paraDiretorio);
+    }
+    else if (flag == "-ar")
+    {
+        copiarFile(nomeOrigem, paraDiretorio);
+    }
+    else
+    {
+        std::cerr &lt;&lt; "Erro: Flag inválida. Use -dir ou -ar." &lt;&lt; std::endl;
+    }
+};
+
+------------------
+            </pre>
+
+            <h2>Como usar o Struct</h2>
+            <p>Para usar a função de copiar, você pode executar o seguinte comando no terminal:</p>
+            <pre
+                class="pre-templates"><i class="icon fa fa-terminal"></i>copiar -ar &lt;nomeOrigem&gt; -para &lt;diretorioDestino&gt;</pre>
+            <p>Ou:</p>
+            <pre
+                class="pre-templates"><i class="icon fa fa-terminal"></i>copiar -dir &lt;nomeOrigem&gt; -para &lt;diretorioDestino&gt;</pre>
+            <p>Substitua <code>&lt;nomeOrigem&gt;</code> pelo nome do arquivo ou diretório de origem e
+                <code>&lt;diretorioDestino&gt;</code> pelo diretório de destino.</p>
+            <p>Para usar a função de copiar, Pode Ser tando em caminhos - Relativos quanto em Absolutos</p>
+            <div class="command">
+                <pre
+                    class="pre-templates"><i class="icon fa fa-angle-double-right"></i>copiar -ar arquivo.txt -para test</pre>
+                <p>Copia o arquivo "arquivo.txt" para o diretório "diretorio_destino".</p>
+            </div>
+            <div class="command">
+                <pre
+                    class="pre-templates"><i class="icon fa fa-angle-double-right"></i>copiar -dir pasta1 -para pasta2 </pre>
+                <p>Copia o diretório "diretorio_origem" para o diretório "diretorio_destino".</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

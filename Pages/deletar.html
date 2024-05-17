@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./Css/style.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./Css/min.css" media="all">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <title>Como usar a função de deletar</title>
+
+    <style>
+        .icon {
+            color: lime;
+            margin-right: 10px;
+        }
+
+        .command {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-template">
+        <div class="card">
+            <h1>Como usar a função de deletar</h1>
+
+                 <h2>CallBack / Functions</h2>
+            <pre class="pre-templates">
+------------------ <img src="https://win98icons.alexmeub.com/icons/png/chm-0.png" /> 
+int main()
+{
+
+deletar("meuDiretorio", ".", "-pasta"); // Exclui o diretório chamado "meuDiretorio" no diretório atual
+deletar("meuArquivo.txt", ".", "-ar"); // Exclui o arquivo chamado "meuArquivo.txt" no diretório atual
+deletar("meuDiretorio", ".", "-all"); // Exclui tudo no diretório chamado "meuDiretorio" no diretório atual
+
+return 0;
+}
+------------------
+            </pre>
+
+            <h2>Registro da Função</h2>
+            <pre class="pre-templates">
+------------------ <img src="https://win98icons.alexmeub.com/icons/png/chm-0.png" /> 
+comandos["deletar"] = [](const std::vector&lt;std::string&gt; &amp;args)
+{
+    if (args.size() &lt; 2 || args.size() &gt; 4)
+    {
+        std::cerr &lt;&lt; "Erro: Uso incorreto. Uso: deletar &lt;flag&gt; &lt;nome_do_arquivo_ou_diretorio&gt; [diretorio]" &lt;&lt; std::endl;
+        return;
+    }
+    if (args[0] != "-dir" &amp;&amp; args[0] != "-all" &amp;&amp; args[0] != "-ar" &amp;&amp; args[0] != "-pasta") // Adiciona "-pasta" como opção válida
+    {
+        std::cerr &lt;&lt; "Erro: Flag inválida. Use -dir, -all, -ar ou -pasta." &lt;&lt; std::endl;
+        return;
+    }
+    deletar(args[1], args.size() == 3 ? args[2] : "", args[0]);
+};
+------------------
+            </pre>
+
+            <h2>Como usar o Comando</h2>
+            <p>Para usar a função de deletar, você pode executar o seguinte comando no terminal:</p>
+            <pre
+                class="pre-templates"><i class="icon fa fa-terminal"></i>deletar &lt;flag&gt; &lt;nome_do_arquivo_ou_diretorio&gt; [diretorio]</pre>
+            <p>Substitua <code>&lt;flag&gt;</code> pela opção desejada (-dir, -all, -ar ou -pasta),
+                <code>&lt;nome_do_arquivo_ou_diretorio&gt;</code> pelo nome do arquivo ou diretório que você deseja
+                excluir e <code>[diretorio]</code> (opcionalmente) pelo diretório onde o arquivo ou diretório está
+                localizado.</p>
+            <p>Por exemplo:</p>
+            <div class="command">
+                <pre class="pre-templates"><i class="icon fa fa-angle-double-right"></i>deletar -ar meuArquivo.txt</pre>
+                <p>Exclui o arquivo chamado "meuArquivo.txt" no diretório atual.</p>
+            </div>
+            <div class="command">
+                <pre class="pre-templates"><i class="icon fa fa-angle-double-right"></i>deletar -dir minhaPasta</pre>
+                <p>Exclui o diretório chamado "minhaPasta" no diretório atual.</p>
+            </div>
+            <div class="command">
+                <pre class="pre-templates"><i class="icon fa fa-angle-double-right"></i>deletar -all meuDiretorio</pre>
+                <p>Exclui tudo dentro do diretório chamado "meuDiretorio" no diretório atual.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

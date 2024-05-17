@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./Css/style.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./Css/min.css" media="all">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <title>Como usar a função de renomear</title>
+
+    <style>
+        .icon {
+            color: lime;
+            margin-right: 10px;
+        }
+
+        .command {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-template">
+        <div class="card">
+            <h1>Como usar a função de renomear</h1>
+
+            <h2>CallBack / Functions</h2>
+            <pre class="pre-templates">
+------------------ <img src="https://win98icons.alexmeub.com/icons/png/chm-0.png" /> 
+int main()
+{
+    std::string nomeArquivo = "antigo_nome.txt";
+    std::string novoNomeArquivo = "novo_nome.txt";
+
+    renomearFile(nomeArquivo, novoNomeArquivo);
+
+    ||
+
+    std::string nomePasta = "antigo_nome";
+    std::string novoNomePasta = "novo_nome";
+
+    renomearFolder(nomePasta, novoNomePasta);
+
+    return 0;
+}
+
+
+
+------------------
+            </pre>
+
+            <h2>Registro da Função</h2>
+            <pre class="pre-templates">
+------------------ <img src="https://win98icons.alexmeub.com/icons/png/chm-0.png" /> 
+comandos["renomear"] = [](const std::vector&lt;std::string&gt; &amp;args)
+{
+    if (args.size() != 4)
+    {
+        std::cerr &lt;&lt; "Erro: Uso incorreto. Uso: renomear &lt;flag&gt; &lt;nome_atual&gt; -para &lt;novo_nome&gt;" &lt;&lt; std::endl;
+        return;
+    }
+
+    std::string flag = args[0];
+    std::string nomeAtual = args[1];
+    std::string novoNome = args[3];
+
+    // Verifica se o usuário especificou o caminho completo ou não
+    if (flag == "-dir")
+    {
+        renomearFolder(nomeAtual, novoNome); // Chama a função renomearPasta
+    }
+    else if (flag == "-ar") // Verifica se a flag é para arquivos
+    {
+        // Extrai o caminho do nome atual
+        std::size_t found = nomeAtual.find_last_of("/");
+        std::string diretorio = ".";
+        if (found != std::string::npos)
+        {
+            diretorio = nomeAtual.substr(0, found);
+            nomeAtual = nomeAtual.substr(found + 1);
+        }
+        renomearFile(nomeAtual, novoNome, flag); // Chama a função renomearArquivo
+    }
+
+    else
+    {
+        // Extrai o caminho do nome atual
+        std::size_t found = nomeAtual.find_last_of("/");
+        std::string diretorio = ".";
+        if (found != std::string::npos)
+        {
+            diretorio = nomeAtual.substr(0, found);
+            nomeAtual = nomeAtual.substr(found + 1);
+        }
+        renomearFolder(nomeAtual, novoNome); // Chama a função renomear de Commands.h
+    }
+};
+------------------
+            </pre>
+
+            <h2>Como usar o Comando</h2>
+            <p>Para usar a função de renomear, você pode executar o seguinte comando no terminal:</p>
+            <pre
+                class="pre-templates"><i class="icon fa fa-terminal"></i>renomear &lt;flag&gt; &lt;nome_atual&gt; -para &lt;novo_nome&gt;</pre>
+            <p>Substitua <code>&lt;flag&gt;</code> pela opção desejada (-dir para diretório, -ar para arquivo),
+                <code>&lt;nome_atual&gt;</code> pelo nome atual do arquivo ou diretório que você deseja renomear,
+                <code>&lt;novo_nome&gt;</code> pelo novo nome desejado.
+            </p>
+            <p>Por exemplo:</p>
+            <div class="command">
+                <pre
+                    class="pre-templates"><i class="icon fa fa-angle-double-right"></i>renomear -ar meuArquivo.txt -para novoNome.txt</pre>
+                <p>Renomeia o arquivo "meuArquivo.txt" para "novoNome.txt".</p>
+            </div>
+            <div class="command">
+                <pre
+                    class="pre-templates"><i class="icon fa fa-angle-double-right"></i>renomear -dir minhaPasta -para novaPasta</pre>
+                <p>Renomeia o diretório "minhaPasta" para "novaPasta".</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

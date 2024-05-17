@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./Css/style.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./Css/min.css" media="all">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <title>Como usar a função de criar arquivo</title>
+    <style>
+        .cmd-template {
+            overflow: hidden;
+            overflow-y: scroll;
+            color: lime;
+            border: 1px solid lime;
+            padding: 1rem;
+            height: 100%;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .h-template {
+            text-align: center;
+        }
+
+        .m {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .p-template {
+            font-size: 20px;
+        }
+
+        .button-template {
+            display: block;
+            width: 200px;
+            height: 50px;
+            margin: 20px auto;
+            background-color: lime;
+            text-align: center;
+            border-radius: 10px;
+            color: black;
+            font-weight: bold;
+            line-height: 50px;
+            cursor: pointer;
+        }
+
+        .button-template:hover {
+            background-color: red;
+        }
+
+        .container-template {
+            overflow: hidden;
+            overflow-y: scroll;
+            color: lime;
+            border: 1px solid lime;
+            padding: 1rem;
+            height: 100%;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .pre-templates {
+            background-color: #000000;
+            border: 1px solid lime;
+            border-radius: 10px;
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px lime;
+        }
+
+        .card {
+            background-color: #1a1a1a;
+            border: 1px solid lime;
+            border-radius: 10px;
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px lime;
+        }
+
+        .card h2 {
+            text-align: center;
+            font-size: 1.5rem;
+            color: rgb(255, 255, 255);
+        }
+
+        .card p,
+        .card pre,
+        .card ul {
+            font-size: 1rem;
+            color: lime;
+        }
+
+        .card pre a {
+            display: inline-flex;
+            align-items: center;
+            align-content: center;
+            gap: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-template">
+        <div class="card">
+            <h1 class="h-template">Como usar a função de criar arquivo</h1>
+            <h2>CallBack / Functions</h2>
+            <pre class="pre-templates">
+------------------ <img src="https://win98icons.alexmeub.com/icons/png/chm-0.png" />
+
+int main()
+{
+
+std::string nomeArquivo = "meu_arquivo.txt"
+std::string diretorio = ".";
+criarArquivo(nomeArquivo,diretorio); 
+
+return 0;
+
+}
+
+------------------
+            </pre>
+
+            <h2 class="h-template">Registro da Função</h2>
+            <pre class="pre-templates">
+------------------ <img src="https://win98icons.alexmeub.com/icons/png/chm-0.png" />
+
+comandos["criar-arquivo"] = [](const std::vector&lt;std::string&gt; &amp;args)
+{
+    if (args.size() &lt; 1 || args.size() &gt; 3)
+    {
+        std::cerr &lt;&lt; "Erro: Uso incorreto. Uso: criar-arquivo &lt;nome_do_arquivo&gt; [diretorio]" &lt;&lt; std::endl;
+        return;
+    }
+    criarArquivo(args[0], args.size() == 3 ? args[2] : "");
+};
+
+------------------
+            </pre>
+
+            <h2 class="h-template">Como usar o Comando</h2>
+            <p class="p-template"><i class="icon fa fa-terminal"></i> Para usar a função de criar arquivo, você pode
+                executar o seguinte comando no terminal:</p>
+            <pre
+                class="pre-templates"><i class="icon fa fa-angle-double-right"></i> criar-arquivo &lt;nome_do_arquivo&gt; [diretorio]</pre>
+            <p class="p-template">Substitua &lt;nome_do_arquivo&gt; pelo nome do arquivo que você deseja criar e
+                [diretorio] (opcionalmente) pelo diretório onde você deseja criar o arquivo.</p>
+            <p class="p-template">Por exemplo:</p>
+            <pre class="pre-templates"><i class="icon fa fa-angle-double-right"></i> criar-arquivo meu_arquivo.txt</pre>
+            <p class="p-template">Cria um arquivo chamado "meu_arquivo.txt" no diretório atual.</p>
+            <pre
+                class="pre-templates"><i class="icon fa fa-angle-double-right"></i> criar-arquivo meu_arquivo.txt /caminho/para/o/diretorio</pre>
+            <p class="p-template">Cria um arquivo chamado "meu_arquivo.txt" no diretório especificado.</p>
+           
+        </div>
+    </div>
+</body>
+
+</html>

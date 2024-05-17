@@ -10,15 +10,44 @@
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <title>Como usar a função de criar pasta</title>
 
+    <style>
+        .icon {
+            color: lime;
+            margin-right: 10px;
+        }
+
+        .command {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container-template ">
+    <div class="container-template">
         <div class="card">
             <h1>Como usar a função de criar pasta</h1>
 
+            <h2>CallBack / Functions</h2>
+            <pre class="pre-templates">
+------------------ <img src="https://win98icons.alexmeub.com/icons/png/chm-0.png" /> 
+int main() 
+{
+
+std::string nomePasta = "pasta_test_criada";
+std::string diretorio = ".";
+
+criarPasta(nomePasta, diretorio);
+
+return 0;
+
+}
+------------------
+            </pre>
+
             <h2>Registro da Função</h2>
             <pre class="pre-templates">
+------------------ <img src="https://win98icons.alexmeub.com/icons/png/chm-0.png" />
+
 comandos["criar-pasta"] = [](const std::vector&lt;std::string&gt; &amp;args)
 {
     if (args.size() &lt; 1 || args.size() &gt; 3)
@@ -28,18 +57,26 @@ comandos["criar-pasta"] = [](const std::vector&lt;std::string&gt; &amp;args)
     }
     criarPasta(args[0], args.size() == 3 ? args[2] : "");
 };
+
+------------------
             </pre>
 
             <h2>Como usar o Struct</h2>
             <p>Para usar a função de criar pasta, você pode executar o seguinte comando no terminal:</p>
-            <pre class="pre-templates"><i class="icon fa fa-angle-double-right"></i>criar-pasta &lt;nome_da_pasta&gt; [diretorio]</pre>
+            <pre
+                class="pre-templates"><i class="icon fa fa-terminal"></i>criar-pasta &lt;nome_da_pasta&gt; [diretorio]</pre>
             <p>Substitua &lt;nome_da_pasta&gt; pelo nome da pasta que você deseja criar e [diretorio] (opcionalmente)
                 pelo diretório onde você deseja criar a pasta.</p>
             <p>Por exemplo:</p>
-            <pre class="pre-templates"><i class="icon fa fa-angle-double-right"></i> criar-pasta minha_pasta</pre>
-            <p>Cria uma pasta chamada "minha_pasta" no diretório atual.</p>
-            <pre class="pre-templates"><i class="icon fa fa-angle-double-right"></i>criar-pasta minha_pasta /caminho/para/o/diretorio</pre>
-            <p>Cria uma pasta chamada "minha_pasta" no diretório especificado.</p>
+            <div class="command">
+                <pre class="pre-templates"><i class="icon fa fa-angle-double-right"></i>criar-pasta minha_pasta</pre>
+                <p>Cria uma pasta chamada "minha_pasta" no diretório atual.</p>
+            </div>
+            <div class="command">
+                <pre
+                    class="pre-templates"><i class="icon fa fa-angle-double-right"></i>criar-pasta minha_pasta /caminho/para/o/diretorio</pre>
+                <p>Cria uma pasta chamada "minha_pasta" no diretório especificado.</p>
+            </div>
         </div>
     </div>
 </body>
