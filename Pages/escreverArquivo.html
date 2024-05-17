@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./Css/style.css" media="all">
+    <link rel="stylesheet" type="text/css" href="./Css/min.css" media="all">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <title>Como usar a função de escrever arquivo</title>
+    <style>
+        .icon {
+            color: lime;
+            margin-right: 10px;
+        }
+
+        .command {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-template">
+        <div class="card">
+            <h1 class="h-template">Como usar a função de escrever arquivo</h1>
+            <h2>CallBack / Functions</h2>
+            <pre class="pre-templates">
+------------------ <img src="https://win98icons.alexmeub.com/icons/png/chm-0.png" />
+
+int main()
+{
+
+std::string nomeArquivo = "meu_arquivo.txt";
+std::string diretorio = ".";
+std::string respostaPadrao = "Resposta padrão";
+escreverArquivo(nomeArquivo, "-P", respostaPadrao, "-dir", diretorio); 
+
+return 0;
+
+}
+
+------------------
+            </pre>
+
+            <h2 class="h-template">Registro da Função</h2>
+            <pre class="pre-templates">
+------------------ <img src="https://win98icons.alexmeub.com/icons/png/chm-0.png" />
+
+comandos["escrever-arquivo"] = [](const std::vector&lt;std::string&gt; &amp;args)
+{
+    if (args.size() &lt; 1 || args.size() &gt; 5)
+    {
+        std::cerr &lt;&lt; "Erro: Uso incorreto. Uso: escrever-arquivo &lt;nome_do_arquivo&gt; [-E conteudo] [-P pergunta] -dir &lt;diretorio&gt;" &lt;&lt; std::endl;
+        return;
+    }
+
+    std::string nomeArquivo = args[0];
+    std::string conteudo = "";
+    std::string pergunta = "";
+    std::string diretorio = "";
+
+    // Percorrer os argumentos para analisar as opções
+    for (size_t i = 1; i < args.size(); ++i)
+    {
+        if (args[i] == "-E")
+        {
+            if (i + 1 < args.size())
+            {
+                conteudo = args[i + 1];
+                ++i; // Avançar para o próximo argumento
+            }
+            else
+            {
+                std::cerr << "Erro: Opção -E requer um argumento." << std::endl;
+                return;
+            }
+        }
+        else if (args[i] == "-P")
+        {
+            if (i + 1 < args.size())
+            {
+                pergunta = args[i + 1];
+                ++i; // Avançar para o próximo argumento
+            }
+            else
+            {
+                std::cerr << "Erro: Opção -P requer um argumento." << std::endl;
+                return;
+            }
+        }
+        else if (args[i] == "-dir")
+        {
+            if (i + 1 < args.size())
+            {
+                diretorio = args[i + 1];
+                ++i; // Avançar para o próximo argumento
+            }
+            else
+            {
+                std::cerr << "Erro: Opção -dir requer um argumento." << std::endl;
+                return;
+            }
+        }
+        else
+        {
+            std::cerr << "Erro: Opção desconhecida: " << args[i] << std::endl;
+            return;
+        }
+    }
+
+    escreverArquivo(nomeArquivo, "-E", conteudo, "-P", pergunta, "-dir", diretorio);
+};
+
+------------------
+            </pre>
+
+            <h2 class="h-template">Como usar o Comando</h2>
+            <p class="p-template"><i class="icon fa fa-terminal"></i> Para usar a função de escrever arquivo, você pode
+                executar o seguinte comando no terminal:</p>
+            <pre
+                class="pre-templates"><i class="icon fa fa-angle-double-right"></i> escrever-arquivo &lt;nome_do_arquivo&gt; [-E conteudo] [-P pergunta] -dir &lt;diretorio&gt;</pre>
+            <p class="p-template">Substitua &lt;nome_do_arquivo&gt; pelo nome do arquivo que você deseja escrever e
+                [diretorio] (opcionalmente) pelo diretório onde você deseja escrever o arquivo.</p>
+            <p class="p-template">Você também pode usar as opções `-E` para especificar o conteúdo do arquivo, `-P`
+                para especificar uma pergunta que será enviada para o servidor e `-dir` para especificar o diretório.
+            </p>
+            <p class="p-template">Por exemplo:</p>
+            <pre class="pre-templates"><i class="icon fa fa-angle-double-right"></i> escrever-arquivo meu_arquivo.txt -P "Qual é o seu nome?" -dir /caminho/para/o/diretorio</pre>
+            <p class="p-template">Isso escreverá um arquivo chamado "meu_arquivo.txt" no diretório especificado e enviará a pergunta "Qual é o seu nome?" para o servidor.</p>
+            <pre class="pre-templates"><i class="icon fa fa-angle-double-right"></i> escrever-arquivo meu_arquivo.txt -E "Conteúdo fixo" -dir /caminho/para/o/diretorio</pre>
+            <p class="p-template">Isso escreverá um arquivo chamado "meu_arquivo.txt" com o conteúdo fixo especificado no diretório especificado.</p>
+
+        </div>
+    </div>
+</body>
+
+</html>

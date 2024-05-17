@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação do Servidor Flask</title>
+
+    <style>
+        .container-servidor {
+
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            overflow-y: scroll;
+            border: 1px solid lime;
+            padding: 1rem;
+            height: 100%;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .heading-servidor {
+            margin-bottom: 20px;
+        }
+
+        .code-block-servidor {
+            background-color: #f7f7f7;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: Consolas, monospace;
+            font-size: 90%;
+             color: rgb(0, 0, 0);
+        }
+
+        .btn-primary-servidor {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary-servidor:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .example {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-servidor">
+        <h1 class="heading-servidor">Documentação do Servidor Flask</h1>
+        <h2 class="heading-servidor">Sintaxe Léxica</h2>
+        <p>O servidor Flask utiliza uma sintaxe Python para definir rotas e lógica de manipulação de requisições. Abaixo
+            está um exemplo básico:</p>
+        <pre class="code-block-servidor">
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route('/api/question', methods=['POST'])
+def pergunta():
+    pergunta = request.form['pergunta']
+    # Lógica para processar a pergunta...
+    return jsonify({"resposta": "Aqui está a resposta para a sua pergunta."})
+
+if __name__ == '__main__':
+    app.run(debug=True)
+        </pre>
+        <h2 class="heading-servidor">Exemplos de Utilização</h2>
+        <div class="example">
+            <h3 class="heading-servidor">Exemplo 1: Envio de Pergunta</h3>
+            <p>Para enviar uma pergunta para o servidor, você pode utilizar uma requisição HTTP POST para a rota
+                '/api/question', enviando os dados no formato JSON. Por exemplo:</p>
+            <pre class="code-block-servidor">
+POST /api/question HTTP/1.1
+Host: seu-servidor.com
+Content-Type: application/json
+
+{
+    "pergunta": "Qual é a resposta para a vida, o universo e tudo mais?"
+}
+            </pre>
+        </div>
+        <div class="example">
+            <h3 class="heading-servidor">Exemplo 2: Recebimento de Resposta</h3>
+            <p>O servidor responderá com a resposta para a sua pergunta no formato JSON. Por exemplo:</p>
+            <pre class="code-block-servidor">
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "resposta": "A resposta é 42."
+}
+            </pre>
+        </div>
+        <h2 class="heading-servidor">Detalhes do Pacote Utilizado</h2>
+        <p>O servidor Flask utiliza a biblioteca Python <code>Flask</code>. Certifique-se de tê-la instalada no seu
+            ambiente Python.</p>
+    </div>
+</body>
+
+</html>
