@@ -39,8 +39,6 @@ void registrarComandos()
         criarArquivo(args[0], args.size() == 3 ? args[2] : "");
     };
 
-  
-
     comandos["copiar"] = [](const std::vector<std::string> &args)
     {
         if (args.size() != 4 || args[2] != "-para")
@@ -153,9 +151,10 @@ void registrarComandos()
         }
     };
 
+
     comandos["escrever-arquivo"] = [](const std::vector<std::string> &args)
     {
-        if (args.size() < 1 || args.size() > 5)
+        if (args.size() < 1)
         {
             std::cerr << "Erro: Uso incorreto. Uso: escrever-arquivo <nome_do_arquivo> [-E conteudo] [-P resposta_padrão] -dir <diretorio>" << std::endl;
             return;
@@ -166,7 +165,7 @@ void registrarComandos()
         std::string respostaPadrao = "";
         std::string diretorio = "";
 
-        // Percorrer os argumentos para analisar as opções
+
         for (size_t i = 1; i < args.size(); ++i)
         {
             if (args[i] == "-E")
@@ -174,7 +173,7 @@ void registrarComandos()
                 if (i + 1 < args.size())
                 {
                     conteudo = args[i + 1];
-                    ++i; // Avançar para o próximo argumento
+                    ++i; 
                 }
                 else
                 {
@@ -187,7 +186,7 @@ void registrarComandos()
                 if (i + 1 < args.size())
                 {
                     respostaPadrao = args[i + 1];
-                    ++i; // Avançar para o próximo argumento
+                    ++i; 
                 }
                 else
                 {
@@ -200,7 +199,7 @@ void registrarComandos()
                 if (i + 1 < args.size())
                 {
                     diretorio = args[i + 1];
-                    ++i; // Avançar para o próximo argumento
+                    ++i; 
                 }
                 else
                 {
@@ -215,14 +214,12 @@ void registrarComandos()
             }
         }
 
-        // Verificar se foi fornecido tanto conteúdo quanto resposta padrão
         if (!conteudo.empty() && !respostaPadrao.empty())
         {
             std::cerr << "Erro: Não é possível especificar tanto conteúdo quanto resposta padrão. Escolha apenas uma opção." << std::endl;
             return;
         }
 
-        // Chamar a função criarArquivo com os argumentos fornecidos
         if (!conteudo.empty())
         {
             escreverArquivo(nomeArquivo, "-E", conteudo, diretorio);
