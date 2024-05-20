@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "./curl/curl.h"
+#include <curl/curl.h>
 #include <locale.h>
 #include <pthread.h>
 #include <unistd.h>

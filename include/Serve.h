@@ -1,13 +1,21 @@
-// server.h
 #ifndef SERVER_H
 #define SERVER_H
 
-struct RespostaHTTP
+#ifdef __cplusplus
+extern "C"
 {
-    char *data;     
-    size_t tamanho; 
-};
+#endif
 
-void askApi(const char *url, int porta, const char *pergunta, struct RespostaHTTP *resposta);
+    struct RespostaHTTP
+    {
+        char *data;
+        size_t tamanho;
+    };
+
+    void askApi(const char *url, int porta, const char *pergunta, struct RespostaHTTP *resposta);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

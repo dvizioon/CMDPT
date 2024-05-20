@@ -6,8 +6,8 @@
 #include "../Serve.h"
 #include <codecvt>
 #include <locale>
-#include <cstring> 
-#include <cjson/cJSON.h>
+#include <cstring>
+#include "../cJSON/cJSON.h"
 
 void FormatarResposta(const char *str_json, char **resposta_ptr)
 {
@@ -123,7 +123,7 @@ std::wstring utf8_to_wstring(const std::string &utf8)
 
 std::string extrairConteudoEntreBackticks(const std::string &texto)
 {
-    std::regex padrao("```(.*?)```", std::regex_constants::ECMAScript | std::regex_constants::multiline);
+    std::regex padrao("```(.*?)```", std::regex_constants::ECMAScript | std::regex_constants::basic);
     std::smatch correspondencia;
 
     if (std::regex_search(texto, correspondencia, padrao))

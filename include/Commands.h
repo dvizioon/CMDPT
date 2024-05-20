@@ -1,9 +1,9 @@
 #ifndef COMANDOS_H
 #define COMANDOS_H
 
-#include <iostream>
 #include <string>
 #include <filesystem>
+#include <iostream>
 
 namespace fs = std::filesystem;
 
@@ -27,6 +27,4 @@ void moverFolder(const std::string &nomePasta, const std::string &novoCaminho);
 
 void moverFile(const std::string &nomeArquivo, const std::string &novoCaminho);
 
-void mostrarComandos();
-
-#endif
+#endif // COMANDOS_H
