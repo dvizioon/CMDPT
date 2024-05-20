@@ -87,7 +87,7 @@ g++ -o CMDPT include/Serve.c src/main.cpp -lcurl -lcjson
 python3 -m venv <seu_ambiente>
 source <seu_ambiente>/bin/activate
 ```
-# Instalação de Pacotes Necessarios
+# Instalação de Pacotes Necessários
 ```sh
 pip install -r Packages/requirements.txt
 ```
