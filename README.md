@@ -71,7 +71,7 @@ git clone https://github.com/dvizioon/CMDPT.git
 ```sh
 cd CMDPT
 ```
-### clone o repositório
+### compiler usando o g++ / para testes unitarios use o gcc
 ```sh
 g++ -o CMDPT include/Serve.c src/main.cpp -lcurl -lcjson
 
